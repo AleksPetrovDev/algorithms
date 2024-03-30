@@ -1,10 +1,11 @@
 <?php
-
+include_once "arrays.php";
 function bubbleSort($array)
 {
     if (!$length = count($array)) {
         return $array;
     }
+    $start = microtime(true);
     $iteration = $length - 1;
     $loop = 0;
     while ($iteration > 0) {
@@ -18,9 +19,12 @@ function bubbleSort($array)
         $iteration--;
         $loop++;
     }
+    $end = microtime(true);
+    echo "Time: ".($end - $start).PHP_EOL;
     return $array;
 }
 
-var_dump(bubbleSort([3, 2, 4, 5, 6, 7, 55, 21, 0]));
-var_dump(bubbleSort([]));
-var_dump(bubbleSort([1,2,3]));
+
+foreach($list_of_arrays as $array) {
+    print_r(bubbleSort($array));
+}
